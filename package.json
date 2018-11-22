@@ -1,0 +1,23 @@
+{
+  "name": "moni",
+  "license": "ISC",
+  "scripts": {
+    "build": "mkdir -p target/ && docker run -u $(id -u):$(id -g) -v ${HOME}/.pkg-cache/:/home/node/.pkg-cache -v ${PWD}:/build/ -t -w /build pionl/node-with-i386:8 node_modules/.bin/pkg src/moni.js --out-path target --targets node8-linux-x64,node8-win-x86,node8-win-x64"
+  },
+  "dependencies": {
+    "pkg": "^4.3.4"
+  },
+  "pkg": {
+    "scripts": [
+      "src/**/*"
+    ],
+    "assets": [
+      "resources/**/*"
+    ],
+    "targets": [
+      "node8-linux-x64",
+      "node8-win-x86",
+      "node8-win-x64"
+    ]
+  }
+}
